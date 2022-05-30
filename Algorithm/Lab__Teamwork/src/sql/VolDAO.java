@@ -12,7 +12,7 @@ public class VolDAO {
 
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/vol?useUnicode=true&characterEncoding=utf8", "root", "12345");
+                    "jdbc:mysql://localhost:3306/volunteer_db?useUnicode=true&characterEncoding=utf8", "root", "admin");
             return conn;
 
         } catch (ClassNotFoundException e) {

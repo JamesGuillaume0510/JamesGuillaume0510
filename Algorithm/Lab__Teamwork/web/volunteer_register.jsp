@@ -3,22 +3,30 @@
 <%@ page import="assignment.bean.UserBean" %>
 
 <%
-    String UserId = null;
-    try{
-        UserId = session.getAttribute("Uno").toString();
-        //session.setAttribute("Uno",UserId);
-    }catch (Exception e){
-        System.out.println("还没登录，跳转到登录界面");
-        response.sendRedirect("login.jsp");
+    UserBean h = (UserBean) session.getAttribute("h");
+    if (h == null) {
+        h = new UserBean();
+        session.setAttribute("h", h);
+        h.setUno("0");
     }
-    UserDao ud = new UserDao();
-    UserBean ub = ud.getUserInfoById(UserId);
+    if(h.getUno()!="4"){
+        System.out.println("还没登录，跳转到登录界面");
+        h.setUno("3");
+        response.sendRedirect("dengru.jsp");
+    }
+    UserBean yong=(UserBean) session.getAttribute("yong");
+    if(h.getUno()=="4"){
+        int Uclass = yong.getUclass();
+        String UserId = yong.getUno();
+        UserDao ud = new UserDao();
+        UserBean ub = ud.getUserInfoById(UserId);
 %>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>个人中心</title>
+
+    <title>志愿申请界面</title>
     <meta charset="utf-8">
     <script type="text/javascript">
         function click0() {
@@ -220,6 +228,63 @@
             box-shadow:0 15px 30px rgba(0,0,0,.3);
             -webkit-transform:translate3d(0,-10px,0);
         }
+        #pu1{
+            height:160px;
+            width:312px;
+            float: left;
+            margin-top: 100px;
+            margin-left: 70px;
+
+        }
+        #pu1 img{
+            height:160px;
+            width:312px;
+            float: left;
+            filter: opacity(40%);
+        }
+        #pu2{
+            margin-top: 100px;
+            height:160px;
+            width:312px;
+            float: left;
+            margin-left: 70px;
+        }
+        #pu2 img{
+            height:160px;
+            width:312px;
+            float: left;
+            filter: opacity(40%);
+        }
+        #pu3{
+            margin-left: 70px;
+            margin-top: 100px;
+            height:160px;
+            width:312px;
+            float: left;
+        }
+        #pu3 img{
+            height:160px;
+            width:312px;
+            float: left;
+            filter: opacity(40%);
+        }
+        .tu{
+            position: absolute;
+            z-index: 1;
+        }
+        .txt{
+            margin-left:75px;
+            margin-top: 60px;
+            position: absolute;
+            z-index: 2;
+            font-size: 20px;
+            font-weight: bolder;
+            color: black;
+        }
+        .tu:hover{
+            -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
+            box-shadow:0 15px 30px rgba(0,0,0,.3);
+        }
     </style>
 </head>
 <body>
@@ -228,7 +293,7 @@
         <div id="top">
             <div id="topleft">
                 <ul>
-                    <li><a href="index.jsp">首页</a><span>|</span></li>
+                    <li><a href="shouye.jsp">首页</a><span>|</span></li>
                     <li><a href="#">报名流程</a><span>|</span></li>
                 </ul>
             </div>
@@ -236,24 +301,33 @@
                 <ul>
                     <li><a href="personal_center.jsp" style="background-color: #33ff88;">个人中心</a></li>
                     <li><span>|</span></li>
-                    <li><a href="login.jsp">登入</a><span>|</span></li>
-                    <li><a href="register.jsp">注册</a><span>|</span></li>
+                    <li><a href="#">你好，<%=yong.getUname()%></a><span>|</span></li>
+                    <li><a href="dozhuxiao.jsp">退出登入</a><span>|</span></li>
                     <li><a href="#">消息(0)</a><span>|</span></li>
                 </ul>
             </div>
         </div>
         <div id="img_and_name">
-            <a href="index.jsp"><img src="img/zhiyuanzhe.png"></a>
+            <a href="shouye.jsp"><img src="img/zhiyuanzhe.png"></a>
             <span>杭州亚运会和亚残会赛会志愿者管理系统</span>
         </div>
         <div id="gerenxingxi">
-
-                <button onclick="click0()">注册成为技术志愿者</button>
-                <button onclick="click1()">注册成为后勤志愿者</button>
-                <button onclick="click2()">注册成为礼仪志愿者</button>
-
+            <div id="pu1">
+                <div  class="tu" ><a href="#" ><img src="img/jishu.jpeg " onclick="click0()"></a></div>
+                <font class="txt">注册成为技术志愿者</font>
+            </div>
+            <div id="pu2">
+                <div  class="tu"><a href="#"><img src="img/houqing.jpeg"  onclick="click1()"></a></div>
+                <font class="txt">注册成为后勤志愿者</font>
+            </div>
+            <div id="pu3">
+                <div  class="tu"><a href="#"><img src="img/liyi.jpeg" onclick="click2()"></a></div>
+                <font class="txt">注册成为礼仪志愿者</font>
+            </div>
         </div>
-        <a href="personal_center.jsp"><p>返回</p></a>
     </div>
 </div>
 </body>
+<%
+    }
+%>

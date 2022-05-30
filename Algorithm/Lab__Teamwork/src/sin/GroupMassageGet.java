@@ -4,7 +4,7 @@ import java.util.*;
 
 public class GroupMassageGet {
     private static final String DRIVER = "com.mysql.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost:3306/bth002?useUnicode=true&characterEncoding=utf8";
+    private static final String URL = "jdbc:mysql://localhost:3306/volunteer_db?useUnicode=true&characterEncoding=utf8";
     public List<volunteerGroupMassage> getManagesByStr(String x){
         Statement stmt = null;
         System.out.println(x);
@@ -13,7 +13,7 @@ public class GroupMassageGet {
         List<volunteerGroupMassage> list=new ArrayList<volunteerGroupMassage>();
         try{
             Class.forName(DRIVER);
-            Connection conn = DriverManager.getConnection(URL, "root", "");
+            Connection conn = DriverManager.getConnection(URL, "root", "admin");
             stmt = conn.createStatement();
             rs = stmt.executeQuery(sql);
             while(rs.next()){
@@ -49,7 +49,7 @@ public class GroupMassageGet {
         String sql = x;
         try{
             Class.forName(DRIVER);
-            Connection conn = DriverManager.getConnection(URL, "root", "");
+            Connection conn = DriverManager.getConnection(URL, "root", "admin");
             stmt = conn.createStatement();
             stmt.execute(sql);
             System.out.println(sql);

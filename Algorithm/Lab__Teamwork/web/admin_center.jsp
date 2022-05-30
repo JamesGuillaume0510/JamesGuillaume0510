@@ -1,8 +1,9 @@
+<%@ page import="assignment.bean.UserBean" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>个人中心</title>
+    <title>管理中心</title>
     <meta charset="utf-8">
     <style type="text/css">
         *{
@@ -85,7 +86,7 @@
             height: 250px;
             width: 150px;
             margin-top: 30px;
-            margin-left: 120px;
+            margin-left: 200px;
         }
         #function1 img{
             position: absolute;
@@ -98,7 +99,7 @@
             color: black;
             font-size: 20px;
             position: absolute;
-            margin-left: 15px;
+            margin-left: 5px;
             margin-top: 110px;
             float: left;
         }
@@ -112,7 +113,7 @@
             height: 250px;
             width: 150px;
             margin-top: 30px;
-            margin-left: 120px;
+            margin-left: 200px;
         }
         #function2 img{
             position: absolute;
@@ -125,7 +126,7 @@
             color: black;
             font-size: 20px;
             position: absolute;
-            margin-left: 24px;
+            margin-left: 5px;
             margin-top: 110px;
             float: left;
         }
@@ -140,7 +141,7 @@
             height: 250px;
             width: 150px;
             margin-top: 30px;
-            margin-left: 120px;
+            margin-left: 200px;
         }
         #function3 img{
             position: absolute;
@@ -154,7 +155,7 @@
             color: black;
             font-size: 20px;
             position: absolute;
-            margin-left: 35px;
+            margin-left: 5px;
             margin-top: 110px;
             float: left;
         }
@@ -193,6 +194,9 @@
     </style>
 </head>
 <body>
+<%
+    UserBean yong=(UserBean) session.getAttribute("yong");
+%>
 <div id="back">
     <div id="center">
         <div id="top">
@@ -204,10 +208,10 @@
             </div>
             <div id="topright">
                 <ul>
-                    <li><a href="gerenzhongxin.jsp" style="background-color: #33ff88;">个人中心</a></li>
+                    <li><a href="admin_center.jsp" style="background-color: #33ff88;">管理中心</a></li>
                     <li><span>|</span></li>
-                    <li><a href="dengru.jsp">登入</a><span>|</span></li>
-                    <li><a href="zhuce.jsp">注册</a><span>|</span></li>
+                    <li><a href="#">你好，<%=yong.getUname()%></a><span>|</span></li>
+                    <li><a href="dozhuxiao.jsp">退出登入</a><span>|</span></li>
                     <li><a href="#">消息(0)</a><span>|</span></li>
                 </ul>
             </div>
@@ -221,27 +225,21 @@
         </div>
         <div id="gongneng">
             <div id="function1">
-                <a href="#">
+                <a href="user_info_list.jsp">
                     <img src="img/xiugaigeren.png">
                     <font>查看志愿者信息</font>
                 </a>
             </div>
             <div id="function2">
-                <a href="#">
+                <a href="guanlizhongxin.jsp">
                     <img src="img/zhiyuanzhebaoming.png">
                     <font>查看未审核申请</font>
                 </a>
             </div>
             <div id="function3">
-                <a href="#">
+                <a href="chakanyiwancheng.jsp">
                     <img src="img/xiugaizhiyuan.png">
-                    <font></font>
-                </a>
-            </div>
-            <div id="function4">
-                <a href="#">
-                    <img src="img/shengpijingdu.png">
-                    <font>招募进展</font>
+                    <font>查看完成的申请</font>
                 </a>
             </div>
         </div>

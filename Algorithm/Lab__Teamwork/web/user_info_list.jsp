@@ -8,6 +8,7 @@
 <%@ page import="sql.Vol" %>
 <%@ page import="sql.VolDAO" %>
 <%@ page import="java.util.*" %>
+<%@ page import="assignment.bean.UserBean" %>
 <%@ page pageEncoding="UTF-8" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -26,7 +27,7 @@
 
 <html>
 <head>
-  <title>个人中心</title>
+  <title>查看志愿者信息界面</title>
   <meta charset="utf-8">
   <style type="text/css">
     *{
@@ -344,6 +345,9 @@
     }
   </script>
 </head>
+<%
+  UserBean yong=(UserBean) session.getAttribute("yong");
+%>
 <body>
 <div id="back">
   <div id="center">
@@ -356,10 +360,10 @@
       </div>
       <div id="topright">
         <ul>
-          <li><a href="gerenzhongxin.jsp" style="background-color: #33ff88;">个人中心</a></li>
+          <li><a href="admin_center.jsp" style="background-color: #33ff88;">管理中心</a></li>
           <li><span>|</span></li>
-          <li><a href="dengru.jsp">登入</a><span>|</span></li>
-          <li><a href="zhuce.jsp">注册</a><span>|</span></li>
+          <li><a href="#">你好，<%=yong.getUname()%></a><span>|</span></li>
+          <li><a href="dozhuxiao.jsp">退出登入</a><span>|</span></li>
           <li><a href="#">消息(0)</a><span>|</span></li>
         </ul>
       </div>
@@ -388,6 +392,7 @@
           <th>组编号</th>
           <th>组名</th>
           <th>职务</th>
+          <th>组长任免</th>
         </tr>
         <%
           VolDAO vol = new VolDAO();
@@ -420,6 +425,7 @@
           <th>组编号</th>
           <th>组名</th>
           <th>职务</th>
+          <th>组长任免</th>
         </tr>
         <%
           VolDAO vol1 = new VolDAO();
@@ -453,6 +459,7 @@
           <th>组编号</th>
           <th>组名</th>
           <th>职务</th>
+          <th>组长任免</th>
         </tr>
         <%
           VolDAO vol2 = new VolDAO();

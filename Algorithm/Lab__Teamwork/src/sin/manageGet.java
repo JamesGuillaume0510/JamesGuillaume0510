@@ -6,7 +6,7 @@ import java.util.List;
 
 public class manageGet {
     private static final String DRIVER = "com.mysql.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost:3306/bth002?useUnicode=true&characterEncoding=utf8";
+    private static final String URL = "jdbc:mysql://localhost:3306/volunteer_db?useUnicode=true&characterEncoding=utf8";
     public List<manage> getManagesByStr(String x){
         Statement stmt = null;
         String sql = x;
@@ -14,7 +14,7 @@ public class manageGet {
         List<manage> list=new ArrayList<manage>();
         try{
             Class.forName(DRIVER);
-            Connection conn = DriverManager.getConnection(URL, "root", "");
+            Connection conn = DriverManager.getConnection(URL, "root", "admin");
             stmt = conn.createStatement();
 
             rs = stmt.executeQuery(sql);
@@ -54,7 +54,7 @@ public class manageGet {
         String sql = x;
         try{
             Class.forName(DRIVER);
-            Connection conn = DriverManager.getConnection(URL, "root", "");
+            Connection conn = DriverManager.getConnection(URL, "root", "admin");
             stmt = conn.createStatement();
 
             stmt.executeUpdate(sql);
@@ -81,7 +81,7 @@ public class manageGet {
         int countUno=0;
         try{
             Class.forName(DRIVER);
-            Connection conn = DriverManager.getConnection(URL, "root", "");
+            Connection conn = DriverManager.getConnection(URL, "root", "admin");
             stmt = conn.createStatement();
             rs=stmt.executeQuery(sql);
             while(rs.next()){
@@ -107,59 +107,56 @@ public class manageGet {
         }
     }
     public List<manage> getManageNotProcess() {
-        return getManagesByStr("SELECT * FROM volunteer_manage where Mstate=1");
+        return getManagesByStr("SELECT * FROM volunteer_manage where Mstate=0");
     }
     public List<manage> getAllmanages(){
         return getManagesByStr("SELECT * FROM volunteer_manage");
     }
     public List<manage> getManageProcessed(){
-        return getManagesByStr("SELECT * FROM volunteer_manage where Mstate>1");
+        return getManagesByStr("SELECT * FROM volunteer_manage where Mstate>0");
     }
     public List<manage> getManagesByMnum(int n){
         return getManagesByStr("SELECT * FROM volunteer_manage where Mnum="+n);
     }
    public void RefusedOne(int x,String n){
-        String str1="UPDATE volunteer_manage set Mstate=3,Madvise='"+n+"' where Mnum="+x;
+        String str1="UPDATE volunteer_manage set Mstate=2,Madvise='"+n+"' where Mnum="+x;
         changeDataByStr(str1);
     }
     public int AgreedOne(int x,String n){
-        String str1="UPDATE volunteer_manage set Mstate=2,Madvise='"+n+"' where Mnum="+x;
+        String str1="UPDATE volunteer_manage set Mstate=1,Madvise='"+n+"' where Mnum="+x;
         changeDataByStr(str1);
         manageGet manageList=new manageGet();
         List<manage> m1= manageList.getManagesByMnum(x);
         manage m2=m1.get(0);
         switch (m2.getMclass()) {
-            case 1:
+            case 0:
+                System.out.println("0000");
                 switch (m2.getGno()) {
-                    case "g1":
-                        setGnoAndGname(m2.getUno(), "g1", "group1");
-
+                    case "1":
+                        setGnoAndGname(m2.getUno(), "1", "group1");
                         break;
-                    case "g2":
-                        setGnoAndGname(m2.getUno(), "g2", "group2");
-
+                    case "2":
+                        setGnoAndGname(m2.getUno(), "2", "group2");
                         break;
-                    case "g3":
-                        setGnoAndGname(m2.getUno(), "g3", "group3");
-
+                    case "3":
+                        setGnoAndGname(m2.getUno(), "3", "group3");
                         break;
-                    case "g4":
-                        setGnoAndGname(m2.getUno(), "g4", "group4");
-
+                    case "4":
+                        setGnoAndGname(m2.getUno(), "4", "group4");
                         break;
                 }
                 break;
-            case 2:
+            case 1:
                 UpdateGroupLno(m2.getGno(), m2.getUno());
 
                 break;
-            case 3:
+            case 2:
                 UpdateGroupLno(m2.getGno(),"");
                 if(CountGroupNumb(m2.getGno())>1){
                     return 1;
                 }
                 break;
-            case 4:
+            case 3:
                 GroupMassageGet gm1=new GroupMassageGet();
                 volunteerGroupMassage v1=gm1.getGroupmassageByGno(m2.getGno());
                 UpdataGroupLnoByUno(m2.getUno(), v1.getLno(),m2.getGno());
@@ -229,7 +226,7 @@ public class manageGet {
         ResultSet rs = null;
         try{
             Class.forName(DRIVER);
-            Connection conn = DriverManager.getConnection(URL, "root", "");
+            Connection conn = DriverManager.getConnection(URL, "root", "admin");
             stmt = conn.createStatement();
             rs = stmt.executeQuery(sql);
             manage pro = new manage();
@@ -258,9 +255,9 @@ public class manageGet {
     }
     public void insertIntoManage(String Uno,String Gno,int Mclass){
         GroupMassageGet gm1=new GroupMassageGet();
-        volunteerGroupMassage v1=gm1.getGroupmassageByGno(Gno);
+        System.out.println("1111");
         int Mnum=getMaxMnum()+1;
-        String str1="insert into volunteer_manage(Mnum,Uno,Gno,Mclass,Mstate) values("+Mnum+","+Uno+",'"+Gno+"',"+Mclass+",1)";
+        String str1="insert into volunteer_manage(Mnum,Uno,Gno,Mclass,Mstate) values("+Mnum+",'"+Uno+"','"+Gno+"',"+Mclass+",0)";
         System.out.println(str1);
         gm1.InsertIntoGroup(str1);
     }

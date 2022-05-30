@@ -1,9 +1,10 @@
 <%@ page import="assignment.dao.UserDao" %>
+<%@ page import="assignment.bean.UserBean" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>注册界面</title>
+    <title>修改密码界面</title>
     <meta charset="utf-8">
     <style type="text/css">
         *{
@@ -121,37 +122,51 @@
         #yiyue{
             font-size: 10px;
         }
+        input#submit {
+            border: none;
+            background-color: #2F79BA;
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-top:10px;
+            cursor: pointer;
+            margin-left: 110px;
+        }
     </style>
 </head>
+<%
+    UserBean yong=(UserBean) session.getAttribute("yong");
+%>
 <body>
 <div id="back">
     <div id="center">
         <div id="top">
             <div id="topleft">
                 <ul>
-                    <li><a href="index.jsp">首页</a><span>|</span></li>
+                    <li><a href="shouye.jsp">首页</a><span>|</span></li>
                     <li><a href="#">报名流程</a><span>|</span></li>
                 </ul>
             </div>
             <div id="topright">
                 <ul>
-                    <li><a href="personal_center.jsp">个人中心</a><span>|</span></li>
-                    <li><a href="login.jsp">登入</a><span>|</span></li>
-                    <li><a href="register.jsp" style="background-color: #33ff88;">注册</a></li>
+                    <li><a href="personal_center.jsp" style="background-color: #33ff88;">个人中心</a><span>|</span></li>
+                    <li><a href="#">你好，<%=yong.getUname()%></a><span>|</span></li>
+                    <li><a href="dozhuxiao.jsp">退出登入</a><span>|</span></li>
                     <li><span>|</span></li>
                     <li><a href="#">消息(0)</a><span>|</span></li>
                 </ul>
             </div>
         </div>
         <div id="img_and_name">
-            <a href="index.jsp"><img src="img/zhiyuanzhe.png"></a>
+            <a href="shouye.jsp"><img src="img/zhiyuanzhe.png"></a>
             <span>杭州亚运会和亚残会赛会志愿者管理系统</span>
         </div>
-        <%String UserId = request.getParameter("UserId");%>
+        <%
+            String UserId = request.getParameter("UserId");%>
         <form action="do_user_operation.jsp?UserId=<%=UserId%>&opCode=2" method="post" id="form">
             <br>
             <div class="zuo">
-                <label ><h2>注册</h2></label>
+                <label ><h2>修改密码</h2></label>
             </div>
             <div class="zuo">
                 <label for="password">新密码</label>
@@ -163,7 +178,7 @@
                 <input type="password" id="password_confirm" name="password_confirm"/>
                 <p id="password_confirm_p">再次输入相同的密码</p>
             </div>
-            <button type="submit">提交</button>
+            <input type="submit" id="submit" value="提交" />
         </form>
 
         <script type="text/javascript">
@@ -182,11 +197,8 @@
             //获取焦点和失去焦点
             for(var i=0,j=document.getElementsByTagName("input");i<j.length;i++){
                 j[i].onblur=function(){//表单失去焦点时，显示验证结果
-                    validateName();
                     validatePassword();
                     validateConPassword();
-                    validateEmail();
-                    validatePhone();
                 }
             }
             //验证密码
