@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 
 <%@ page import="sql.UserDao" %>
 <%@ page import="sql.UserBean" %>
@@ -21,7 +21,7 @@
 <head>
     <title>个人中心</title>
     <meta charset="utf-8">
-    <style type="text/css">
+    <style>
         *{
             margin:0;
             padding:0;
@@ -92,18 +92,6 @@
             height: 250px;
             width: 100%;
         }
-        #gongneng{
-            background-color: #e0e0e0;
-            height: 302px;
-            width: 100%;
-        }
-        #function1{
-            float: left;
-            height: 250px;
-            width: 150px;
-            margin-top: 30px;
-            margin-left: 120px;
-        }
         #function1 img{
             position: absolute;
             height: 250px;
@@ -119,18 +107,6 @@
             margin-top: 110px;
             float: left;
         }
-        #function1:hover{
-            -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
-            box-shadow:0 15px 30px rgba(0,0,0,.3);
-            -webkit-transform:translate3d(0,-10px,0);
-        }
-        #function2{
-            float: left;
-            height: 250px;
-            width: 150px;
-            margin-top: 30px;
-            margin-left: 120px;
-        }
         #function2 img{
             position: absolute;
             height: 250px;
@@ -145,19 +121,6 @@
             margin-left: 24px;
             margin-top: 110px;
             float: left;
-        }
-        #function2:hover{
-            -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
-            box-shadow:0 15px 30px rgba(0,0,0,.3);
-            -webkit-transform:translate3d(0,-10px,0);
-        }
-        #function3{
-            background-color: white;
-            float: left;
-            height: 250px;
-            width: 150px;
-            margin-top: 30px;
-            margin-left: 120px;
         }
         #function3 img{
             position: absolute;
@@ -175,18 +138,7 @@
             margin-top: 110px;
             float: left;
         }
-        #function3:hover{
-            -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
-            box-shadow:0 15px 30px rgba(0,0,0,.3);
-            -webkit-transform:translate3d(0,-10px,0);
-        }
-        #function4{
-            float: left;
-            height: 250px;
-            width: 150px;
-            margin-top: 30px;
-            margin-left: 120px;
-        }
+
         #function4 img{
             position: absolute;
             height: 250px;
@@ -202,11 +154,6 @@
             margin-top: 110px;
             float: left;
         }
-        #function4:hover{
-            -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
-            box-shadow:0 15px 30px rgba(0,0,0,.3);
-            -webkit-transform:translate3d(0,-10px,0);
-        }
         #detail1{
             font-size: 23px;
 
@@ -220,7 +167,7 @@
         <div id="top">
             <div id="topleft">
                 <ul>
-                    <li><a href="index.jsp">首页</a><span>|</span></li>
+                    <li><a href="shouye.jsp">首页</a><span>|</span></li>
                     <li><a href="#">报名流程</a><span>|</span></li>
                 </ul>
             </div>
@@ -228,18 +175,18 @@
                 <ul>
                     <li><a href="personal_center.jsp" style="background-color: #33ff88;">个人中心</a></li>
                     <li><span>|</span></li>
-                    <li><a href="login.jsp">登入</a><span>|</span></li>
-                    <li><a href="register.jsp">注册</a><span>|</span></li>
+                    <li><a href="dengru.jsp">登入</a><span>|</span></li>
+                    <li><a href="zhuce.jsp">注册</a><span>|</span></li>
                     <li><a href="#">消息(0)</a><span>|</span></li>
                 </ul>
             </div>
         </div>
         <div id="img_and_name">
-            <a href="index.jsp"><img src="img/zhiyuanzhe.png"></a>
+            <a href="shouye.jsp"><img alt="志愿者图片" src="img/zhiyuanzhe.png"></a>
             <span>杭州亚运会和亚残会赛会志愿者管理系统</span>
         </div>
-        <div id="gerenxingxi" align="center">
-            <font>个人信息</font>
+        <div id="gerenxingxi">
+            <span>个人信息</span>
             <%-- ################################################################ wlk --%>
             <table id="detail1">
                 <tr><td>用户编号：</td><td><%=recent_user.getUno()%></td></tr>
