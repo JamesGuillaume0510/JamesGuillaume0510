@@ -3,6 +3,10 @@
 <%@ page import="assignment.bean.UserBean" %>
 
 <%
+    UserBean yong = session.getAttribute("yong");
+    if (yong.getUclass() != 3){
+
+    }
     UserBean h = (UserBean) session.getAttribute("h");
     if (h == null) {
         h = new UserBean();
@@ -40,6 +44,10 @@
         function click2() {
             alert("注册申请已经提交");
             window.location.href="do_volunteer_register.jsp?Gno=2&UserId=<%=UserId%>";
+        }
+        function click3() {
+            alert("注册申请已经提交");
+            window.location.href="do_volunteer_register.jsp?Gno=3&UserId=<%=UserId%>";
         }
     </script>
     <style type="text/css">
@@ -323,6 +331,10 @@
             <div id="pu3">
                 <div  class="tu"><a href="#"><img src="img/liyi.jpeg" onclick="click2()"></a></div>
                 <font class="txt">注册成为礼仪志愿者</font>
+            </div>
+            <div id="pu4">
+                <div  class="tu"><a href="#"><img src="img/liyi.jpeg" onclick="click3()"></a></div>
+                <font class="txt">注册成为机动愿者</font>
             </div>
         </div>
     </div>
