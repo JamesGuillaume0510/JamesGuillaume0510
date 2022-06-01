@@ -18,6 +18,7 @@
     ub.setUweight(Uweight);
     ub.setUtel(tel);
     System.out.println(ub.toString());
+
     if (opcode.equals("2")){
         if (Uname.equals("") || Uid.equals("") || Uheight == 0 || Uweight == 0 || tel.equals("")){
             //信息填写不完整的

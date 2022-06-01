@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 16033
-  Date: 3/5/2022
-  Time: 上午12:12
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page import="sql.Vol" %>
 <%@ page import="sql.VolDAO" %>
 <%@ page import="java.util.*" %>
@@ -130,7 +123,6 @@
     #function1:hover{
       -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
       box-shadow:0 15px 30px rgba(0,0,0,.3);
-      -webkit-transform:translate3d(0,-10px,0);
     }
     #function2{
       float: left;
@@ -157,7 +149,6 @@
     #function2:hover{
       -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
       box-shadow:0 15px 30px rgba(0,0,0,.3);
-      -webkit-transform:translate3d(0,-10px,0);
     }
     #function3{
       background-color: white;
@@ -186,7 +177,6 @@
     #function3:hover{
       -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
       box-shadow:0 15px 30px rgba(0,0,0,.3);
-      -webkit-transform:translate3d(0,-10px,0);
     }
     #function4{
       float: left;
@@ -213,7 +203,6 @@
     #function4:hover{
       -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
       box-shadow:0 15px 30px rgba(0,0,0,.3);
-      -webkit-transform:translate3d(0,-10px,0);
     }
     td,th{
       border: 1px solid gray;
@@ -259,6 +248,8 @@
       var allGroup = document.getElementById("allGroup");
       var G01 = document.getElementById("G01");
       var G02 = document.getElementById("G02");
+      var G03 = document.getElementById("G03");
+      var G04 = document.getElementById("G04");
 
       if(detectedGroup=="全部"){
 
@@ -266,12 +257,16 @@
         allGroup.style.display = "block";
         G01.style.display = "none";
         G02.style.display = "none";
+        G03.style.display = "none";
+        G04.style.display = "none";
       }else if(detectedGroup=="G01"){
 
         sessionStorage.setItem("group","G01");
         allGroup.style.display = "none";
         G01.style.display = "block";
         G02.style.display = "none";
+        G03.style.display = "none";
+        G04.style.display = "none";
 
       }else if(detectedGroup=="G02"){
 
@@ -279,6 +274,24 @@
         allGroup.style.display = "none";
         G01.style.display = "none";
         G02.style.display = "block";
+        G03.style.display = "none";
+        G04.style.display = "none";
+      }else if(detectedGroup=="G03"){
+
+        sessionStorage.setItem("group","G03");
+        allGroup.style.display = "none";
+        G01.style.display = "none";
+        G02.style.display = "none";
+        G03.style.display = "block";
+        G04.style.display = "none";
+      }else if(detectedGroup=="G04"){
+
+        sessionStorage.setItem("group","G04");
+        allGroup.style.display = "none";
+        G01.style.display = "none";
+        G02.style.display = "none";
+        G03.style.display = "none";
+        G04.style.display = "block";
       }
 
     }
@@ -317,18 +330,24 @@
       var allGroup = document.getElementById("allGroup");
       var G01 = document.getElementById("G01");
       var G02 = document.getElementById("G02");
+      var G03 = document.getElementById("G03");
+      var G04 = document.getElementById("G04");
       if(group == "全部"){
 
         document.getElementById("selectGroup").options[0].selected = true;
         allGroup.style.display = "block";
         G01.style.display = "none";
         G02.style.display = "none";
+        G03.style.display = "none";
+        G04.style.display = "none";
       }else if(group=="G01"){
 
         document.getElementById("selectGroup").options[1].selected = true;
         allGroup.style.display = "none";
         G01.style.display = "block";
         G02.style.display = "none";
+        G03.style.display = "none";
+        G04.style.display = "none";
 
       }else if(group=="G02"){
 
@@ -336,11 +355,31 @@
         allGroup.style.display = "none";
         G01.style.display = "none";
         G02.style.display = "block";
+        G03.style.display = "none";
+        G04.style.display = "none";
+      }else if(group=="G03"){
+
+        document.getElementById("selectGroup").options[3].selected = true;
+        allGroup.style.display = "none";
+        G01.style.display = "none";
+        G02.style.display = "none";
+        G03.style.display = "block";
+        G04.style.display = "none";
+      }else if(group=="G04"){
+
+        document.getElementById("selectGroup").options[4].selected = true;
+        allGroup.style.display = "none";
+        G01.style.display = "none";
+        G02.style.display = "none";
+        G03.style.display = "none";
+        G04.style.display = "block";
       }else{
         document.getElementById("selectGroup").options[0].selected = true;
         allGroup.style.display = "block";
         G01.style.display = "none";
         G02.style.display = "none";
+        G03.style.display = "none";
+        G04.style.display = "none";
       }
     }
   </script>
@@ -377,8 +416,10 @@
       <form action="">
         <select id="selectGroup">
           <option id="0">全部</option>
-          <option id="1" value="G01" >体育馆</option>
-          <option id="2" value="G02" >田径场</option>
+          <option value="G01" id="1">technology</option>
+          <option value="G02" id="2">logistics</option>
+          <option value="G03" id="3">protocol</option>
+          <option value="G04" id="4">flexible</option>
         </select>
       </form>
 
@@ -410,7 +451,7 @@
           <td><%=volunteer.getPosition()%></td>
           <td><% if(volunteer.getPosition().equals("组员")){
           %><button name="<%=volunteer.getUno()%>" value="<%=volunteer.getGno()%>">任命组长</button> <%
-            } %></td>
+            }else %>  <p>组长</p></td>
         </tr>
         <% } %>
       </table>
@@ -443,7 +484,7 @@
           <td><%=volunteer.getPosition()%></td>
           <td><% if(volunteer.getPosition().equals("组员")){
           %><button name="<%=volunteer.getUno()%>" value="<%=volunteer.getGno()%>">任命组长</button> <%
-            } %></td>
+            } else %>  <p>组长</p></td>
 
         </tr>
         <% } %>
@@ -477,13 +518,80 @@
           <td><%=volunteer.getPosition()%></td>
           <td><% if(volunteer.getPosition().equals("组员")){
           %><button name="<%=volunteer.getUno()%>" value="<%=volunteer.getGno()%>">任命组长</button> <%
-            } %></td>
+            } else %>  <p>组长</p></td>
 
         </tr>
         <% } %>
       </table>
     </div>
 
+    <div id="G03" style="text-align: center;margin-top: 3%;display: none">
+      <table   width="50%" style="text-align: center;border: 1px solid;margin: 10px auto auto;">
+        <tr>
+          <th>志愿者编号</th>
+          <th>姓名</th>
+          <th>性别</th>
+          <th>组编号</th>
+          <th>组名</th>
+          <th>职务</th>
+          <th>组长任免</th>
+        </tr>
+        <%
+          VolDAO vol3 = new VolDAO();
+          List<Vol> volunteers3 = vol3.getVolunteersByGroup("G02");
+          for(int i=0;i<volunteers3.size();i++){
+            Vol volunteer = volunteers3.get(i);
+
+        %>
+        <tr>
+          <td><%=volunteer.getUno()%></td>
+          <td><a href=""></a><a><%=volunteer.getUname()%></a></td>
+          <td><%=volunteer.getUsex()%></td>
+          <td><%=volunteer.getGno()%></td>
+          <td><%=volunteer.getGname()%></td>
+          <td><%=volunteer.getPosition()%></td>
+          <td><% if(volunteer.getPosition().equals("组员")){
+          %><button name="<%=volunteer.getUno()%>" value="<%=volunteer.getGno()%>">任命组长</button> <%
+            }else %>  <p>组长</p></td>
+
+        </tr>
+        <% } %>
+      </table>
+    </div>
+
+    <div id="G04" style="text-align: center;margin-top: 3%;display: none">
+      <table   width="50%" style="text-align: center;border: 1px solid;margin: 10px auto auto;">
+        <tr>
+          <th>志愿者编号</th>
+          <th>姓名</th>
+          <th>性别</th>
+          <th>组编号</th>
+          <th>组名</th>
+          <th>职务</th>
+          <th>组长任免</th>
+        </tr>
+        <%
+          VolDAO vol4 = new VolDAO();
+          List<Vol> volunteers4 = vol4.getVolunteersByGroup("G02");
+          for(int i=0;i<volunteers4.size();i++){
+            Vol volunteer = volunteers4.get(i);
+
+        %>
+        <tr>
+          <td><%=volunteer.getUno()%></td>
+          <td><a href=""></a><a><%=volunteer.getUname()%></a></td>
+          <td><%=volunteer.getUsex()%></td>
+          <td><%=volunteer.getGno()%></td>
+          <td><%=volunteer.getGname()%></td>
+          <td><%=volunteer.getPosition()%></td>
+          <td><% if(volunteer.getPosition().equals("组员")){
+          %><button name="<%=volunteer.getUno()%>" value="<%=volunteer.getGno()%>">任命组长</button> <%
+          } else %>  <p>组长</p></td>
+
+        </tr>
+        <% } %>
+      </table>
+    </div>
 
   </div>
 </div>

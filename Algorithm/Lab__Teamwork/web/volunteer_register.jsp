@@ -3,11 +3,9 @@
 <%@ page import="assignment.bean.UserBean" %>
 
 <%
-    UserBean yong = session.getAttribute("yong");
-    if (yong.getUclass() != 3){
-
-    }
     UserBean h = (UserBean) session.getAttribute("h");
+    UserBean yong=(UserBean) session.getAttribute("yong");
+
     if (h == null) {
         h = new UserBean();
         session.setAttribute("h", h);
@@ -18,7 +16,6 @@
         h.setUno("3");
         response.sendRedirect("dengru.jsp");
     }
-    UserBean yong=(UserBean) session.getAttribute("yong");
     if(h.getUno()=="4"){
         int Uclass = yong.getUclass();
         String UserId = yong.getUno();
@@ -29,7 +26,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+    <%if(yong.getUclass() != 3){%>
+        <script type="text/javascript">
+            alert("注册志愿者前请先完善用户信息！");
+            window.location.href="personal_center.jsp"
+        </script>
+    <%}%>
     <title>志愿申请界面</title>
     <meta charset="utf-8">
     <script type="text/javascript">
@@ -151,7 +153,6 @@
         #function1:hover{
             -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
             box-shadow:0 15px 30px rgba(0,0,0,.3);
-            -webkit-transform:translate3d(0,-10px,0);
         }
         #function2{
             float: left;
@@ -178,7 +179,6 @@
         #function2:hover{
             -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
             box-shadow:0 15px 30px rgba(0,0,0,.3);
-            -webkit-transform:translate3d(0,-10px,0);
         }
         #function3{
             background-color: white;
@@ -207,7 +207,6 @@
         #function3:hover{
             -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
             box-shadow:0 15px 30px rgba(0,0,0,.3);
-            -webkit-transform:translate3d(0,-10px,0);
         }
         #function4{
             float: left;
@@ -234,7 +233,6 @@
         #function4:hover{
             -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
             box-shadow:0 15px 30px rgba(0,0,0,.3);
-            -webkit-transform:translate3d(0,-10px,0);
         }
         #pu1{
             height:160px;

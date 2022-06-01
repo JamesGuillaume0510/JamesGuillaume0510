@@ -106,7 +106,6 @@
         #function1:hover{
             -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
             box-shadow:0 15px 30px rgba(0,0,0,.3);
-            -webkit-transform:translate3d(0,-10px,0);
         }
         #function2{
             float: left;
@@ -133,7 +132,6 @@
         #function2:hover{
             -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
             box-shadow:0 15px 30px rgba(0,0,0,.3);
-            -webkit-transform:translate3d(0,-10px,0);
         }
         #function3{
             background-color: white;
@@ -162,7 +160,6 @@
         #function3:hover{
             -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
             box-shadow:0 15px 30px rgba(0,0,0,.3);
-            -webkit-transform:translate3d(0,-10px,0);
         }
         #function4{
             float: left;
@@ -189,7 +186,6 @@
         #function4:hover{
             -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
             box-shadow:0 15px 30px rgba(0,0,0,.3);
-            -webkit-transform:translate3d(0,-10px,0);
         }
     </style>
 </head>

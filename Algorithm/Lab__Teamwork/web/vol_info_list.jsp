@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 16033
-  Date: 3/5/2022
-  Time: 上午12:12
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page import="sql.Vol" %>
 <%@ page import="sql.VolDAO" %>
 <%@ page import="java.util.*" %>
@@ -129,7 +122,6 @@
         #function1:hover{
             -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
             box-shadow:0 15px 30px rgba(0,0,0,.3);
-            -webkit-transform:translate3d(0,-10px,0);
         }
         #function2{
             float: left;
@@ -156,7 +148,6 @@
         #function2:hover{
             -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
             box-shadow:0 15px 30px rgba(0,0,0,.3);
-            -webkit-transform:translate3d(0,-10px,0);
         }
         #function3{
             background-color: white;
@@ -185,7 +176,6 @@
         #function3:hover{
             -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
             box-shadow:0 15px 30px rgba(0,0,0,.3);
-            -webkit-transform:translate3d(0,-10px,0);
         }
         #function4{
             float: left;
@@ -212,7 +202,6 @@
         #function4:hover{
             -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
             box-shadow:0 15px 30px rgba(0,0,0,.3);
-            -webkit-transform:translate3d(0,-10px,0);
         }
         td,th{
             border: 1px solid gray;

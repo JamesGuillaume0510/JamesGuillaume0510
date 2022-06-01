@@ -17,5 +17,5 @@
         // 退出账号
         session.setAttribute("Uno",null);
     }
-    response.sendRedirect("login.jsp");
+    response.sendRedirect("dengru.jsp");
 %>

@@ -20,13 +20,13 @@ public class manage{
     public String getMadvise(){return Madvise;}
     public String getGno(){return Gno;}
     public String getMclassOfchange(){
-        if(Mclass==2){
+        if(Mclass==1){
             return "申请成为组长";
         }
-        else if(Mclass==3){
+        else if(Mclass==2){
             return "申请撤销组长";
         }
-        else if(Mclass==1){
+        else if(Mclass==0){
             return "申请成为志愿者";
         }
         else{
@@ -34,13 +34,13 @@ public class manage{
         }
     }
     public String getMstateOfchange(){
-        if(Mstate==1){
+        if(Mstate==0){
             return "未处理";
         }
-        else if(Mstate==2){
+        else if(Mstate==1){
             return "已拒绝";
         }
-        else if(Mstate==3){
+        else if(Mstate==2){
             return "已同意";
         }
         else {
