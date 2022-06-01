@@ -26,9 +26,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%if(yong.getUclass() != 3){%>
+    <%if(yong.getUclass() != 2){%>
         <script type="text/javascript">
             alert("注册志愿者前请先完善用户信息！");
+            window.location.href="personal_center.jsp"
+        </script>
+    <%}%>
+    <%if(yong.getGno().equals("")){%>
+        <script type="text/javascript">
+            alert("您已经申请成功为志愿者！\n如果需要修改志愿请移步‘修改志愿’");
             window.location.href="personal_center.jsp"
         </script>
     <%}%>
@@ -37,19 +43,19 @@
     <script type="text/javascript">
         function click0() {
             alert("注册申请已经提交");
-            window.location.href="do_volunteer_register.jsp?Gno=0&UserId=<%=UserId%>";
+            window.location.href="do_volunteer_register.jsp?Gno=G01&UserId=<%=UserId%>";
         }
         function click1() {
             alert("注册申请已经提交");
-            window.location.href="do_volunteer_register.jsp?Gno=1&UserId=<%=UserId%>";
+            window.location.href="do_volunteer_register.jsp?Gno=G02&UserId=<%=UserId%>";
         }
         function click2() {
             alert("注册申请已经提交");
-            window.location.href="do_volunteer_register.jsp?Gno=2&UserId=<%=UserId%>";
+            window.location.href="do_volunteer_register.jsp?Gno=G03&UserId=<%=UserId%>";
         }
         function click3() {
             alert("注册申请已经提交");
-            window.location.href="do_volunteer_register.jsp?Gno=3&UserId=<%=UserId%>";
+            window.location.href="do_volunteer_register.jsp?Gno=G04&UserId=<%=UserId%>";
         }
     </script>
     <style type="text/css">

@@ -4,8 +4,7 @@
 <%
     String Gno = request.getParameter("Gno");
     String UserId = request.getParameter("UserId");
-    int numGno = Integer.parseInt(Gno);
     UserDao ud = new UserDao();
-    ud.volunteer_register(UserId, 0, 0,numGno);
+    ud.volunteer_register(UserId, 0, 0,Gno);
     response.sendRedirect("personal_center.jsp");
 %>

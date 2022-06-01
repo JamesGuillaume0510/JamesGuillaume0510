@@ -28,6 +28,7 @@
             request.setAttribute("correct","信息提交成功");
         }
     }else if(opcode.equals("1")){
+        ub.setUclass(1);
         request.setAttribute("correct","信息提交成功");
     }
     UserDao ud = new UserDao();
