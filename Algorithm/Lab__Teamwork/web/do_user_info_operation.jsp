@@ -17,7 +17,7 @@
     ub.setUheight(Uheight);
     ub.setUweight(Uweight);
     ub.setUtel(tel);
-    System.out.println(ub.toString());
+    // System.out.println(ub.toString());
 
     if (opcode.equals("2")){
         if (Uname.equals("") || Uid.equals("") || Uheight == 0 || Uweight == 0 || tel.equals("")){
@@ -33,6 +33,7 @@
     }
     UserDao ud = new UserDao();
     ud.change_user_info(ub);
+    System.out.println(ub);
     session.setAttribute("yong",ub);
     request.getRequestDispatcher("personal_info.jsp").forward(request,response);//转发，跳转的分发器
     response.sendRedirect("personal_info.jsp");

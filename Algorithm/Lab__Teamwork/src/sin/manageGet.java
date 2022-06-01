@@ -130,16 +130,16 @@ public class manageGet {
             case 0:
                 switch (m2.getGno()) {
                     case "G01":
-                        setGnoAndGname(m2.getUno(), "1", "technology");
+                        setGnoAndGname(m2.getUno(), "G01", "technology");
                         break;
                     case "G02":
-                        setGnoAndGname(m2.getUno(), "2", "logistics");
+                        setGnoAndGname(m2.getUno(), "G02", "logistics");
                         break;
                     case "G03":
-                        setGnoAndGname(m2.getUno(), "3", "protocol");
+                        setGnoAndGname(m2.getUno(), "G03", "protocol");
                         break;
                     case "G04":
-                        setGnoAndGname(m2.getUno(), "4", "flexible");
+                        setGnoAndGname(m2.getUno(), "G04", "flexible");
                         break;
                 }
                 break;
@@ -150,6 +150,9 @@ public class manageGet {
 
                 if(CountGroupNumb(m2.getGno())>1){
                     return 1;
+                }
+                else if(CountGroupNumb(m2.getGno())==1){
+                    return 2;
                 }
                 UpdateGroupLno(m2.getGno(),"");
                 break;
@@ -178,7 +181,9 @@ public class manageGet {
                 break;
         }
         String str1="UPDATE volunteer_manage set Mstate=1,Madvise='"+n+"' where Mnum="+x;
+
         changeDataByStr(str1);
+        System.out.println("yichuli");
         return 0;
     }
     public void AgreeTwo(int x,String n){

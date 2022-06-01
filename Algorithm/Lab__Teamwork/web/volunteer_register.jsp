@@ -5,7 +5,8 @@
 <%
     UserBean h = (UserBean) session.getAttribute("h");
     UserBean yong=(UserBean) session.getAttribute("yong");
-
+    //System.out.println("这是volunteer_register处的yong:");
+    //System.out.println(yong.toString());
     if (h == null) {
         h = new UserBean();
         session.setAttribute("h", h);
@@ -32,7 +33,7 @@
             window.location.href="personal_center.jsp"
         </script>
     <%}%>
-    <%if(yong.getGno().equals("")){%>
+    <%if(!yong.getGno().equals("")){%>
         <script type="text/javascript">
             alert("您已经申请成功为志愿者！\n如果需要修改志愿请移步‘修改志愿’");
             window.location.href="personal_center.jsp"
