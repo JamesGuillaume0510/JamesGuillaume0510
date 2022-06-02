@@ -5,8 +5,8 @@
 <%
     UserBean h = (UserBean) session.getAttribute("h");
     UserBean yong=(UserBean) session.getAttribute("yong");
-    //System.out.println("这是volunteer_register处的yong:");
-    //System.out.println(yong.toString());
+    System.out.println("这是volunteer_register处的yong:");
+    System.out.println(yong.toString());
     if (h == null) {
         h = new UserBean();
         session.setAttribute("h", h);

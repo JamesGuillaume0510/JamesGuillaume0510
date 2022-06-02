@@ -7,7 +7,7 @@ public class GroupMassageGet {
     private static final String URL = "jdbc:mysql://localhost:3306/volunteer_db?useUnicode=true&characterEncoding=utf8";
     public List<volunteerGroupMassage> getManagesByStr(String x){
         Statement stmt = null;
-        System.out.println(x);
+        //System.out.println(x);
         String sql = x;
         ResultSet rs = null;
         List<volunteerGroupMassage> list=new ArrayList<volunteerGroupMassage>();
@@ -52,7 +52,7 @@ public class GroupMassageGet {
             Connection conn = DriverManager.getConnection(URL, "root", "admin");
             stmt = conn.createStatement();
             stmt.execute(sql);
-            System.out.println(sql);
+            //System.out.println(sql);
             conn.close();
         }
         catch(Exception ex){
@@ -75,7 +75,6 @@ public class GroupMassageGet {
     }
     public volunteerGroupMassage getGroupmassageByGno(String Gno){
         List<volunteerGroupMassage> mg1=getManagesByStr("SELECT * FROM volunteer_group where Gno='"+Gno+"'");
-        System.out.println(123123);
         volunteerGroupMassage mg2;
         if(mg1.size()==0){
             mg2 = new volunteerGroupMassage();
@@ -83,7 +82,16 @@ public class GroupMassageGet {
         else{
             mg2 = mg1.get(0);
         }
-        System.out.println("mg2:"+mg2.getLno()+"123");
+        //System.out.println("mg2:"+mg2.getLno()+"123");
         return mg2;
+    }
+    public boolean chackVolunteerExist(String Uno){
+        List<volunteerGroupMassage> mg1=getManagesByStr("SELECT * FROM volunteer_group where Uno='"+Uno+"'");
+        if(mg1.size()==0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

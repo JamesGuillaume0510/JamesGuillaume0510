@@ -58,7 +58,7 @@ public class manageGet {
             stmt = conn.createStatement();
 
             stmt.executeUpdate(sql);
-            System.out.println(sql);
+            // System.out.println(sql);
             conn.close();
         }
         catch(Exception ex){
@@ -87,9 +87,9 @@ public class manageGet {
             while(rs.next()){
                 countUno=rs.getInt("count(Uno)");
             }
-            System.out.println(sql);
+            // System.out.println(sql);
             conn.close();
-            System.out.println(countUno);
+            // System.out.println(countUno);
             return countUno;
         }
         catch(Exception ex){
@@ -183,7 +183,7 @@ public class manageGet {
         String str1="UPDATE volunteer_manage set Mstate=1,Madvise='"+n+"' where Mnum="+x;
 
         changeDataByStr(str1);
-        System.out.println("yichuli");
+        // System.out.println("yichuli");
         return 0;
     }
     public void AgreeTwo(int x,String n){
@@ -208,12 +208,12 @@ public class manageGet {
     }
     public void UpdataGroupGno(String Uno,String Gno){
         String str1="UPDATE volunteer_group set Gno='"+Gno+"' where Uno='"+Uno+"'";
-        System.out.println(str1);
+        // System.out.println(str1);
         changeDataByStr(str1);
     }
     public void UpdataGroupGname(String Uno,String Gname){
         String str1="UPDATE volunteer_group set Gname='"+Gname+"' where Uno='"+Uno+"'";
-        System.out.println(str1);
+        // System.out.println(str1);
         changeDataByStr(str1);
     }
     public void UpdataGroupLnoByUno(String Uno,String Lno,String Gno){
@@ -263,10 +263,30 @@ public class manageGet {
     }
     public void insertIntoManage(String Uno,String Gno,int Mclass){
         GroupMassageGet gm1=new GroupMassageGet();
-        System.out.println("1111");
+        // System.out.println("1111");
         int Mnum=getMaxMnum()+1;
         String str1="insert into volunteer_manage(Mnum,Uno,Gno,Mclass,Mstate) values("+Mnum+",'"+Uno+"','"+Gno+"',"+Mclass+",0)";
-        System.out.println(str1);
+        // System.out.println(str1);
         gm1.InsertIntoGroup(str1);
+    }
+    public boolean chackManageExist(String Uno){
+        manageGet manageList=new manageGet();
+        List<manage> m1= manageList.getManageNotProcess();
+        String str1="SELECT * FROM volunteer_manage where Mstate=0 and Uno='"+Uno+"'";
+        // System.out.println(str1);
+        m1=getManagesByStr(str1);
+        if(m1.size()==1){
+            return  true;
+        }
+        else{
+            return  false;
+        }
+    }
+    public List<manage> getManageByUno(String Uno){
+        manageGet manageList=new manageGet();
+        List<manage> m1= manageList.getManageNotProcess();
+        String str1="SELECT * FROM volunteer_manage where Mstate=0 and Uno='"+Uno+"'";
+        m1=getManagesByStr(str1);
+        return m1;
     }
 }
